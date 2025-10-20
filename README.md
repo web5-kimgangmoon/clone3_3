@@ -6,7 +6,7 @@
 
 # 스택
 
-next, motion-framer, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
+next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
 
 # 기타
 
@@ -25,3 +25,5 @@ next, motion-framer, embla Carousel, react, tailwind, github, @heroicons/react, 
 1. 넷플릭스 레이아웃 잡기.
 
 ## 10/20
+
+1. 작업시작. header 세션 작업중.
