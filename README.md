@@ -24,6 +24,10 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 넷플릭스 레이아웃 잡기.
 
-## 10/20
+### 10/20
 
 1. 작업시작. header 세션 작업중.
+
+### 10/21
+
+1. header 배경.
