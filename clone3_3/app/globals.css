@@ -5,6 +5,11 @@
   --foreground: #171717;
 }
 
+@utility container {
+  margin-inline: auto;
+  padding-inline: 11rem;
+}
+
 @theme {
   --color-logo: oklch(0.66 0.29 28.11);
 }

@@ -24,6 +24,8 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 넷플릭스 레이아웃 잡기.
 
+## 완료된 목표
+
 ### 10/20
 
 1. 작업시작. header 세션 작업중.
@@ -31,3 +33,9 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 10/21
 
 1. header 배경.
+
+### 10/22
+
+1. 헤더 배경작업 중. linear-gradient로 명암을 넣었다.
+
+- p.s. bottom을 radial-gradient와 border-radius를 활용하여 꾸며야한다.
