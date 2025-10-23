@@ -39,3 +39,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 1. 헤더 배경작업 중. linear-gradient로 명암을 넣었다.
 
 - p.s. bottom을 radial-gradient와 border-radius를 활용하여 꾸며야한다.
+
+### 10/23
+
+1. 헤더 배경작업 완료. 내부 콘텐츠 채우기(상호작용은 애니메이션만 추가합니다.)
