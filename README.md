@@ -43,3 +43,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 10/23
 
 1. 헤더 배경작업 완료. 내부 콘텐츠 채우기(상호작용은 애니메이션만 추가합니다.)
+
+### 10/24
+
+1. 시장 갔다왔습니다. 쉬었습니다. 죄송합니다.
