@@ -55,3 +55,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 10/27
 
 1. input 스타일링 중.
+
+### 10/28
+
+1. 쉬었습니다. 죄송합니다.

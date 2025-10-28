@@ -29,12 +29,11 @@
 }
 
 .noAutofill:autofill {
-  box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.3) inset;
   -webkit-text-fill-color: white;
+  opacity: 40%;
+  background-color: rgba(0, 0, 0, 0.4) !important;
   background-image: none !important;
   caret-color: white;
-  animation: none;
-  /* transition: background-color 9999s ease-in-out 0s; */
 }
 
 body {
