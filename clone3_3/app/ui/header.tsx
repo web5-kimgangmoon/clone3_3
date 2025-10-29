@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { NetflexLogo } from "../svgStore/neflexLogo";
 import { motion } from "motion/react";
-import { useId } from "react";
+import { useId, useState } from "react";
 
 export const Header = () => {
   return (
@@ -69,6 +69,7 @@ export const Header = () => {
 
 const Content = () => {
   const inputId = useId();
+  const [email, setEmail] = useState<string>("");
   return (
     <div className="container relative z-1 w-full h-full">
       <div className="flex justify-between items-center">
@@ -94,18 +95,27 @@ const Content = () => {
         <div className="flex gap-6 w-auto h-16">
           <div className="relative w-110 h-full">
             <div className="relative z-1 w-full h-full bg-transparent p-1 border-transparent border-[3px] focus-within:border-white">
-              <label
-                className="absolute z-1 top-0 left-2 peer-focus:bg-blue-300"
-                htmlFor={inputId}
-              >
-                dsadasd
-              </label>
               <input
-                className="w-full h-full px-1 bg-black/30 outline-none noAutofill border border-neutral-500 peer"
+                className="relative pt-3 px-4 w-full h-full noAutofill outline-none bg-black/30 text-white peer border border-neutral-500"
                 type="email"
                 name="email"
+                autoComplete="email"
                 id={inputId}
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.currentTarget.value);
+                }}
               ></input>
+              <label
+                className={clsx(
+                  "absolute z-1 top-4 left-5 text-lg text-stone-400 font-semibold transition transition-150 peer-focus:-translate-y-3 peer-focus:-translate-x-[0.6rem] peer-focus:scale-75",
+                  email !== "" &&
+                    "-translate-y-3 -translate-x-[0.6rem] scale-75"
+                )}
+                htmlFor={inputId}
+              >
+                이메일 주소
+              </label>
             </div>
           </div>
 

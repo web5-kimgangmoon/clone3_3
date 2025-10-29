@@ -28,16 +28,21 @@
   }
 }
 
-.noAutofill:autofill {
-  -webkit-text-fill-color: white;
-  opacity: 40%;
-  background-color: rgba(0, 0, 0, 0.4) !important;
-  background-image: none !important;
-  caret-color: white;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.noAutofill:autofill {
+  background: transparent !important;
+  caret-color: white;
+  /* box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.3) inset !important; */
+  transition: background-color;
+  transition-delay: 86400s;
+  transition-property: background-color;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.noAutofill {
 }
