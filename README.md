@@ -63,3 +63,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 10/29
 
 1. 헤더 autofill 스타일링 해결, input focus transition 추가.
+
+### 10/30
+
+1. 쉬었습니다. 죄송합니다.
