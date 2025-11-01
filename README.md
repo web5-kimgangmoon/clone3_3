@@ -71,3 +71,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 10/31
 
 1. 쉬었습니다. 죄송합니다.
+
+### 11/1
+
+1. 쉬었습니다. 죄송합니다.
