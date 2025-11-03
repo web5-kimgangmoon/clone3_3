@@ -6,7 +6,7 @@
 
 # 스택
 
-next, motion-framer, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
+next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
 
 # 기타
 
@@ -24,4 +24,54 @@ next, motion-framer, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 넷플릭스 레이아웃 잡기.
 
-## 10/20
+## 완료된 목표
+
+### 10/20
+
+1. 작업시작. header 세션 작업중.
+
+### 10/21
+
+1. header 배경.
+
+### 10/22
+
+1. 헤더 배경작업 중. linear-gradient로 명암을 넣었다.
+
+- p.s. bottom을 radial-gradient와 border-radius를 활용하여 꾸며야한다.
+
+### 10/23
+
+1. 헤더 배경작업 완료. 내부 콘텐츠 채우기(상호작용은 애니메이션만 추가합니다.)
+
+### 10/24
+
+1. 시장 갔다왔습니다. 쉬었습니다. 죄송합니다.
+
+### 10/25
+
+1. 시장 갔다왔습니다. 쉬었습니다. 죄송합니다.
+
+### 10/27
+
+1. input 스타일링 중.
+
+### 10/28
+
+1. 쉬었습니다. 죄송합니다.
+
+### 10/29
+
+1. 헤더 autofill 스타일링 해결, input focus transition 추가.
+
+### 10/30
+
+1. 쉬었습니다. 죄송합니다.
+
+### 10/31
+
+1. 쉬었습니다. 죄송합니다.
+
+### 11/1
+
+1. 쉬었습니다. 죄송합니다.
