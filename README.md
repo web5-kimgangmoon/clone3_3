@@ -75,3 +75,7 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 11/1
 
 1. 쉬었습니다. 죄송합니다.
+
+### 11/2
+
+1. 헤더 작업 완료, tmdb에 대해 조사했습니다.
