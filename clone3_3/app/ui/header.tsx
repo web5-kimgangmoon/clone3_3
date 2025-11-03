@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { NetflexLogo } from "../svgStore/neflexLogo";
 import { motion } from "motion/react";
 import { useId, useState } from "react";
+import { Popcorn } from "../svgStore/popcorn";
 
 export const Header = () => {
   return (
@@ -92,11 +93,11 @@ const Content = () => {
           시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를
           입력하세요.
         </h4>
-        <div className="flex gap-6 w-auto h-16">
+        <div className="flex items-center gap-1 w-auto h-16">
           <div className="relative w-110 h-full">
-            <div className="relative z-1 w-full h-full bg-transparent p-1 border-transparent border-[3px] focus-within:border-white">
+            <div className="relative z-1 w-full h-full bg-transparent p-[0.1rem] border-transparent border-[3px] focus-within:border-white rounded-md">
               <input
-                className="relative pt-3 px-4 w-full h-full noAutofill outline-none bg-black/30 text-white peer border border-neutral-500"
+                className="relative pt-3 px-4 w-full h-full noAutofill outline-none bg-black/30 text-white peer border border-neutral-500 rounded-md"
                 type="email"
                 name="email"
                 autoComplete="email"
@@ -119,7 +120,7 @@ const Content = () => {
             </div>
           </div>
 
-          <button className="flex justify-center items-center gap-4 bg-red-600 text-center w-40 h-full text-[1.5rem] font-bold">
+          <button className="flex justify-center items-center gap-4 bg-red-600 text-center w-40 h-13 text-[1.5rem] font-semibold rounded-md">
             <span>시작하기</span>
             <svg
               viewBox="0 0 24 24"
