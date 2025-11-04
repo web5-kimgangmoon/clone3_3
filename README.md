@@ -6,7 +6,7 @@
 
 # 스택
 
-next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
+next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx, @tanstack/react-query, tmdb, axios
 
 # 기타
 
@@ -15,6 +15,10 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 2. 단, 일요일은 쉬며 진행상황을 올리지 않는다. 일요일이 아닌 날에 개인사정으로 진해을 못한 경우에는 작업내용 중에 간단한 사유를 적어 커밋한다.
 
 3. issue는 issue.md 파일에 저장, 해결과정 또한 issue.md 파일에서 기재한다.
+
+# 필요한 api키
+
+- 환경변수 NEXT_PUBLIC_API_KEY, tmdb의 api키가 필요합니다.
 
 ## 최종 목표
 
@@ -79,3 +83,10 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 11/2
 
 1. 헤더 작업 완료, tmdb에 대해 조사했습니다.
+
+### 11/3
+
+1. tanstack/react-query 추가.
+2. tmdb와 연결성공.
+3. 슬라이드 틀 완성.
+4. 화살표 svg 수정 및 public 폴더 내부에 추가.
