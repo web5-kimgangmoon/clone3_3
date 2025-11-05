@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useGetMovieList } from "../data/movieList";
 import { Popcorn } from "../svgStore/popcorn";
-import useEmblaCarousel from "embla-carousel-react";
-import { useEffect } from "react";
+import useEmblaCarousel, { UseEmblaCarouselType } from "embla-carousel-react";
+import { useEffect, useState } from "react";
 import { ArrowSvg } from "./public/arrow";
+import clsx from "clsx";
 
 export const Body = () => {
   return (
@@ -55,51 +56,98 @@ const MovieRanking = () => {
     loop: false,
     watchDrag: false,
   });
+  const [slideStat, setSlideStat] = useState("start");
 
-  // useEffect(()=>{
-  //   if(emblaApi){
-  //   emblaApi.on("resize",(e)=>{e.})
-  //   }
-  // },[emblaApi])
+  // const slideStartRef = useRef<HTMLLIElement | null>(null);
+  // const slideEndRef = useRef<HTMLLIElement | null>(null);
+
+  // useEffect(() => {
+  //   if (slideStartRef.current === null) return;
+
+  //   const observer = new IntersectionObserver((e) => {
+  //     if (e[0].intersectionRatio > 0.8) setSlideStat("start");
+  //   });
+  //   observer.observe(slideStartRef.current);
+  //   return () => observer.disconnect();
+  // }, [slideStartRef]);
+
+  // useEffect(() => {
+  //   if (slideEndRef.current === null) return;
+
+  //   const observer = new IntersectionObserver((e) => {
+  //     console.log("dsad");
+  //     if (e[0].intersectionRatio > 0.8) setSlideStat("end");
+  //   });
+  //   observer.observe(slideEndRef.current);
+  //   return () => observer.disconnect();
+  // }, [slideEndRef]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      const ctlBtnFn = (e: Extract<UseEmblaCarouselType[1], Object>) => {
+        if (e.slidesInView()[0] === 0) return setSlideStat("start");
+        if (e.slidesInView().at(-1) === 9) return setSlideStat("end");
+        return setSlideStat("medium");
+      };
+      emblaApi.on("resize", ctlBtnFn);
+      emblaApi.on("scroll", ctlBtnFn);
+      return () => {
+        emblaApi.off("resize", ctlBtnFn);
+        emblaApi.off("slidesChanged", ctlBtnFn);
+      };
+    }
+  }, [emblaApi]);
 
   return (
-    <section className="relative">
-      <div className="absolute top-0 left-0 z-10 flex items-center h-full bg-black">
+    <section className="relative overflow-hidden">
+      <div
+        className={clsx(
+          "absolute top-6 left-0 z-10 flex items-center h-full bg-black pr-2 transition-transform duration-500 delay-200",
+          { "-translate-x-8": slideStat === "start" }
+        )}
+      >
         <button
-          className="flex justify-start items-center w-5 h-5 bg-red-400 py-3"
+          className={
+            "flex justify-center items-center px-2 py-12 bg-[rgba(255,255,255,0.1)] text-neutral-300 hover:bg-[rgba(255,255,255,0.2)] hover:text-white rounded-xl cursor-pointer"
+          }
           onClick={() => {
             let f = emblaApi?.slidesInView()[0];
             if (f === undefined) return;
             emblaApi?.scrollTo(f - 5);
           }}
         >
-          <ArrowSvg className="w-4 aspect-square rotate-180" />
+          <ArrowSvg className="w-2 rotate-180" strokeWidth={2} />
         </button>
       </div>
-      <div className="absolute top-0 right-0 z-10 flex items-center h-full bg-black">
+      <div
+        className={clsx(
+          "absolute top-6 right-0 z-10 flex items-center h-full bg-black pl-2 transition-transform duration-500 delay-200",
+          { "translate-x-8": slideStat === "end" }
+        )}
+      >
         <button
-          className="flex justify-end items-center w-5 h-5 bg-red-400"
+          className="flex justify-center items-center px-2 py-12 bg-[rgba(255,255,255,0.1)] text-neutral-300 hover:bg-[rgba(255,255,255,0.2)] hover:text-white rounded-xl cursor-pointer"
           onClick={() => {
             let f = emblaApi?.slidesInView()[0];
             if (f === undefined) return;
             emblaApi?.scrollTo(f + 5);
           }}
         >
-          <ArrowSvg className="w-4" />
+          <ArrowSvg className="w-2" strokeWidth={2} />
         </button>
       </div>
       <h3 className="relative z-11 text-4xl font-bold tracking-wide pb-4">
         지금 뜨는 컨텐츠
       </h3>
       <div className="overflow-hidden" ref={emblaRef}>
-        <ul className="flex px-8 gap-10">
+        <ul className="flex px-8 py-4 gap-10">
           {!(isFetching || isPending) &&
             data!.results.map((v, idx) => {
               if (idx > 9) return;
               return (
                 <li
                   key={idx}
-                  className="relative aspect-[0.6] grow-0 shrink-0 basis-[14rem] min-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  className="relative aspect-[0.7] grow-0 shrink-0 basis-[13rem] min-0 hover:scale-105 transition-transform duration-300 cursor-pointer"
                 >
                   <Image
                     className="rounded-md"
@@ -108,6 +156,16 @@ const MovieRanking = () => {
                     fill
                     style={{ objectFit: "cover" }}
                   />
+                  <strong
+                    data-content={`${idx + 1}`}
+                    className={clsx(
+                      "absolute z-9 -left-4 -bottom-5 text-[8.5rem] text-black",
+                      "before:absolute before:top-0 before:left-0 before:z-10 before:w-full before:h-full before:text-[8.5rem] before:text-black before:content-[attr(data-content)] fillWord"
+                    )}
+                    style={{ WebkitTextStroke: "0.25rem rgba(255,255,255,1)" }}
+                  >
+                    {idx + 1}
+                  </strong>
                 </li>
               );
             })}

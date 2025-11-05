@@ -80,13 +80,18 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 쉬었습니다. 죄송합니다.
 
-### 11/2
+### 11/3
 
 1. 헤더 작업 완료, tmdb에 대해 조사했습니다.
 
-### 11/3
+### 11/4
 
 1. tanstack/react-query 추가.
 2. tmdb와 연결성공.
 3. 슬라이드 틀 완성.
 4. 화살표 svg 수정 및 public 폴더 내부에 추가.
+
+### 11/5
+
+1. 날짜 수정.
+2. 슬라이드 완성.
