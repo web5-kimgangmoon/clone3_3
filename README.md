@@ -95,3 +95,8 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 날짜 수정.
 2. 슬라이드 완성.
+
+### 11/6
+
+1. 카드리스트 작성완료.
+2. popover 작성중.
