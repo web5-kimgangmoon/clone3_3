@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useGetMovieList } from "../data/movieList";
 import { Popcorn } from "../svgStore/popcorn";
 import useEmblaCarousel, { UseEmblaCarouselType } from "embla-carousel-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { ArrowSvg } from "./public/arrow";
 import clsx from "clsx";
 import { MediaImage } from "../svgStore/mediaImage";
@@ -12,23 +12,16 @@ import { SmileEmoticon } from "../svgStore/smileEmoticon";
 
 import Link from "next/link";
 import { PlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import {
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from "@headlessui/react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 
 export const Body = () => {
   return (
-    <div className="bg-black text-white pt-10">
-      <div className="container flex flex-col gap-16">
-        <Header />
-        <MovieRanking />
-        <Introduction />
-        <QnAList />
-      </div>
+    <div className="container flex flex-col gap-16 pt-10">
+      <Header />
+      <MovieRanking />
+      <Introduction />
+      <QnAList />
+      <RegisterSection />
     </div>
   );
 };
@@ -355,57 +348,145 @@ const QnAList = () => {
       <h3 className="relative z-11 text-4xl font-bold tracking-wide pb-4">
         자주 묻는 질문
       </h3>
-      <PopoverGroup className={"flex flex-col gap-2 overflow-hidden"}>
-        {disclosureListData.map((v, idx) => (
-          <PopoverItem {...v} key={idx} />
-        ))}
-      </PopoverGroup>
+      <DisclosureGroup dataList={disclosureListData} />
     </section>
+  );
+};
+
+const DisclosureGroup = ({
+  dataList,
+}: {
+  dataList: { title: string; content: React.ReactNode }[];
+}) => {
+  const [openIdx, setOpenIdx] = useState(-1);
+  const checkState = useCallback(
+    (idx: number) => {
+      console.log(`idx=${idx}, current=${openIdx}`);
+      if (openIdx === -1) return "close";
+      if (idx !== openIdx) return "closeN";
+      return "open";
+    },
+    [openIdx]
+  );
+  return (
+    <div className={"flex flex-col gap-2 overflow-hidden"}>
+      {dataList.map((v, idx) => (
+        <PopoverItem
+          {...v}
+          key={idx}
+          idx={idx}
+          state={checkState(idx)}
+          setState={setOpenIdx}
+        />
+      ))}
+    </div>
   );
 };
 
 const PopoverItem = ({
   title,
   content,
+  idx,
+  state,
+  setState,
 }: {
   title: string;
   content: React.ReactNode;
+  idx: number;
+  state: "open" | "close" | "closeN";
+  setState: (n: number) => void;
 }) => {
   return (
-    <Popover>
-      {({ open }) => (
-        <>
-          <PopoverButton
-            data-
-            className={clsx(
-              "relative z-5 flex justify-between items-center w-full bg-stone-700 p-6 transition-colors transition-200 hover:bg-stone-600 cursor-pointer",
-              "text-2xl font-medium"
-            )}
-          >
-            <h3>{title}</h3>
-            <span className="block w-9 aspect-square">
-              {open ? <XMarkIcon /> : <PlusIcon />}
-            </span>
-          </PopoverButton>
-          <AnimatePresence>
-            {open && (
-              <PopoverPanel
-                static
-                as={motion.div}
-                className={clsx(
-                  "overflow-hidden border-t-[1.5px] border-t-black bg-stone-700 w-full p-6",
-                  "text-2xl font-medium"
-                )}
-                initial={{ translateY: "-100%" }}
-                animate={{ translateY: 0 }}
-                exit={{ translateY: "-100%" }}
-              >
-                {content}
-              </PopoverPanel>
-            )}
-          </AnimatePresence>
-        </>
-      )}
-    </Popover>
+    <div className={"break-keep"}>
+      <button
+        className={clsx(
+          "relative z-5 flex justify-between items-center w-full bg-stone-700 p-6 transition-colors transition-200 hover:bg-stone-600 cursor-pointer outline-none",
+          "text-2xl font-medium"
+        )}
+        onClick={() => {
+          if (state === "open") return setState(-1);
+          setState(idx);
+        }}
+      >
+        <h3>{title}</h3>
+        <span className="block w-9 aspect-square">
+          {state === "open" ? <XMarkIcon /> : <PlusIcon />}
+        </span>
+      </button>
+      <motion.div
+        onClick={(e) => e.preventDefault()}
+        className={clsx(
+          "overflow-hidden border-t-[1.5px] border-t-black bg-stone-700 w-full h-max",
+          "text-2xl font-medium"
+        )}
+        initial={{
+          maxHeight: 0,
+          transition: { duration: 0.3, ease: "easeInOut" },
+        }}
+        animate={{
+          maxHeight: state === "open" ? 400 : 0,
+          transition:
+            state === "closeN"
+              ? { duration: 0, ease: "easeInOut" }
+              : { duration: 0.3, ease: "easeInOut" },
+        }}
+      >
+        <div className="p-6">{content}</div>
+      </motion.div>
+    </div>
   );
 };
+
+const RegisterSection = () => {
+  const inputId = useId();
+  const [email, setEmail] = useState<string>("");
+
+  return (
+    <section className="mx-auto">
+      <h4 className="text-center font-semibold">
+        시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를
+        입력하세요.
+      </h4>
+      <div className="flex items-center gap-1 w-auto h-16">
+        <div className="relative w-150 h-full">
+          <div className="relative z-1 w-full h-full bg-transparent p-[0.1rem] border-transparent border-[3px] focus-within:border-white rounded-md">
+            <input
+              className="relative pt-3 px-4 w-full h-full noAutofill outline-none bg-black/30 text-white peer border border-neutral-500 rounded-md"
+              type="email"
+              name="email"
+              autoComplete="email"
+              id={inputId}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.currentTarget.value);
+              }}
+            ></input>
+            <label
+              className={clsx(
+                "absolute z-1 top-4 left-5 text-lg text-stone-400 font-semibold transition transition-150 peer-focus:-translate-y-3 peer-focus:-translate-x-[0.6rem] peer-focus:scale-75",
+                email !== "" && "-translate-y-3 -translate-x-[0.6rem] scale-75"
+              )}
+              htmlFor={inputId}
+            >
+              이메일 주소
+            </label>
+          </div>
+        </div>
+        <button className="flex justify-center items-center gap-4 bg-red-600 text-center w-40 h-13 text-[1.5rem] font-semibold rounded-md">
+          <span>시작하기</span>
+          <ArrowSvg className="w-2" strokeWidth={2} />
+        </button>
+      </div>
+    </section>
+  );
+};
+// <PopoverPanel
+//   transition
+//   className={clsx(
+//     "overflow-hidden border-t-[1.5px] border-t-black bg-stone-700 w-full p-6 max-h-[300px]",
+//     "text-2xl font-medium",
+//     "data-closed:max-h-0 transition-[max-height] duration-200 ease-linear"
+//   )}
+// >
+//   {content}
+// </PopoverPanel>

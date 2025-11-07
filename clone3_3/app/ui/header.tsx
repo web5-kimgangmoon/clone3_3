@@ -120,7 +120,6 @@ const Content = () => {
               </label>
             </div>
           </div>
-
           <button className="flex justify-center items-center gap-4 bg-red-600 text-center w-40 h-13 text-[1.5rem] font-semibold rounded-md">
             <span>시작하기</span>
             <ArrowSvg className="w-2" strokeWidth={2} />

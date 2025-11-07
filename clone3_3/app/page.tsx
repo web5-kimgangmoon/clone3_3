@@ -5,6 +5,7 @@ import { Header } from "./ui/header";
 import { Body } from "./ui/body";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Footer } from "./ui/footer";
 
 const ReactQueryProvider = ({ children }: { children: React.ReactNode }) => {
   const [queryClient] = useState(() => new QueryClient());
@@ -17,11 +18,9 @@ const ReactQueryProvider = ({ children }: { children: React.ReactNode }) => {
 export default function Home() {
   return (
     <ReactQueryProvider>
-      <div>
-        <Header></Header>
-        <Body></Body>
-        <footer></footer>
-      </div>
+      <Header></Header>
+      <Body></Body>
+      <Footer />
     </ReactQueryProvider>
   );
 }

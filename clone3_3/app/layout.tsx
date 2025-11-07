@@ -20,7 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.className} antialiased`}>{children}</body>
+      <body
+        className={`${pretendard.className} antialiased bg-black text-white`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

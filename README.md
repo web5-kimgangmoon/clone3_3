@@ -100,3 +100,8 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. 카드리스트 작성완료.
 2. popover 작성중.
+
+### 11/7
+
+1. body 완성.
+2. footer은 남은시간에 layout만 대략적으로 잡았습니다.
