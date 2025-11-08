@@ -443,7 +443,7 @@ const RegisterSection = () => {
 
   return (
     <section className="mx-auto">
-      <h4 className="text-center font-semibold">
+      <h4 className="text-center font-semibold pb-2">
         시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일 주소를
         입력하세요.
       </h4>

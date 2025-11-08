@@ -105,3 +105,11 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 
 1. body 완성.
 2. footer은 남은시간에 layout만 대략적으로 잡았습니다.
+
+### 11/8
+
+1. 완성.
+
+## 느낀점
+
+내 실력이 부족한 탓에 기간이 지나치게 늘어질까봐 반응형까지 구현하진 못했다. 기간 내로 완성할 수 있는 개발자를 꿈꾸며, 추가적인 코딩연습이 필요할 것 같다. 다음에는 반드시 일주일 내로 완성하고 싶다.
