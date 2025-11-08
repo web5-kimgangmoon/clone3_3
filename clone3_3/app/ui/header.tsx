@@ -3,6 +3,7 @@ import { NetflexLogo } from "../svgStore/neflexLogo";
 import { motion } from "motion/react";
 import { useId, useState } from "react";
 import { Popcorn } from "../svgStore/popcorn";
+import { ArrowSvg } from "./public/arrow";
 
 export const Header = () => {
   return (
@@ -119,21 +120,9 @@ const Content = () => {
               </label>
             </div>
           </div>
-
           <button className="flex justify-center items-center gap-4 bg-red-600 text-center w-40 h-13 text-[1.5rem] font-semibold rounded-md">
             <span>시작하기</span>
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-4 aspect-square"
-            >
-              <path
-                stroke="currentColor"
-                fill="currentColor"
-                d="M2 0 L10 10 L2 22 L4 22 L12 10 L4 0 Z"
-              ></path>
-            </svg>
-            {/* <span children=">" className="font-normal"></span> */}
+            <ArrowSvg className="w-2" strokeWidth={2} />
           </button>
         </div>
       </div>

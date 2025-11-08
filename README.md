@@ -6,7 +6,7 @@
 
 # 스택
 
-next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx
+next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, pretendard, headless ui, clsx, @tanstack/react-query, tmdb, axios
 
 # 기타
 
@@ -15,6 +15,10 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 2. 단, 일요일은 쉬며 진행상황을 올리지 않는다. 일요일이 아닌 날에 개인사정으로 진해을 못한 경우에는 작업내용 중에 간단한 사유를 적어 커밋한다.
 
 3. issue는 issue.md 파일에 저장, 해결과정 또한 issue.md 파일에서 기재한다.
+
+# 필요한 api키
+
+- 환경변수 NEXT_PUBLIC_API_KEY, tmdb의 api키가 필요합니다.
 
 ## 최종 목표
 
@@ -75,3 +79,37 @@ next, framer-motion, embla Carousel, react, tailwind, github, @heroicons/react, 
 ### 11/1
 
 1. 쉬었습니다. 죄송합니다.
+
+### 11/3
+
+1. 헤더 작업 완료, tmdb에 대해 조사했습니다.
+
+### 11/4
+
+1. tanstack/react-query 추가.
+2. tmdb와 연결성공.
+3. 슬라이드 틀 완성.
+4. 화살표 svg 수정 및 public 폴더 내부에 추가.
+
+### 11/5
+
+1. 날짜 수정.
+2. 슬라이드 완성.
+
+### 11/6
+
+1. 카드리스트 작성완료.
+2. popover 작성중.
+
+### 11/7
+
+1. body 완성.
+2. footer은 남은시간에 layout만 대략적으로 잡았습니다.
+
+### 11/8
+
+1. 완성.
+
+## 느낀점
+
+내 실력이 부족한 탓에 기간이 지나치게 늘어질까봐 반응형까지 구현하진 못했다. 기간 내로 완성할 수 있는 개발자를 꿈꾸며, 추가적인 코딩연습이 필요할 것 같다. 다음에는 반드시 일주일 내로 완성하고 싶다.
